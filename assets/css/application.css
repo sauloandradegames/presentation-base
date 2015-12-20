@@ -1,0 +1,84 @@
+/*General rules*/
+/*begin*/
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+a{
+    color: #428bca;
+    text-decoration: none;
+}
+
+/*end*/
+
+.navbar{
+    min-height:65px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    position: relative;
+}
+    .navbar-header{
+        float: left;
+    }
+
+.conteiner{
+    width: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.table{
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+
+.table > tbody > tr > td{
+    padding: 8px;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}
+
+.table-responsive{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+    background-color: #F9F9F9;
+}
+
+.title{
+    font-size: 20px;
+}
+
+.icon-2x {
+    font-size: 2em;
+}
+
+.icon-link {
+    margin-right: 10px;
+}
+
+.icon-link:hover {
+    text-decoration: none;
+}
+
+.me-color {
+    color: #7cb122;
+}
+
+.skill-color {
+    color: #f0db4f;
+}
+
+.al-up-color {
+    color: #7cb124;
+}
