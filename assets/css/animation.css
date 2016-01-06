@@ -22,7 +22,10 @@
     from { color: #343434; }
     to { color: #3b5998; } }
 
-.a-linkedin:hover i {
+a{
+  color:#fff !important;
+}
+.a-linkedin:hover i{
   animation: to-linkedin-color .5s;
   -webkit-animation: to-linkedin-color .5s;
   color: #007bb6; 
