@@ -273,12 +273,120 @@ delHeap (HP x _ a b) = merge a b
           
           <section data-markdown>
             <script type="text/template">
-              ##Rotacionando uma árvore AVL
-              - Rotação à direita (Right Rotation):
-              - Rotação à esquerda (Left Rotation):
-              - Rotação dupla à direita ():
-              - Rotação dupla à esquerda ():
-              - PS: insira imagens
+              <!-- .slide: data-background="http://big.assets.huffingtonpost.com/spinning_the_wheel_by_leafman813-d6uhbh6.gif"-->
+              #Rodando uma árvore AVL
+            </script>
+          </section>
+          
+          <section data-markdown>
+            <script type="text/template">
+              ##Rodando uma árvore AVL
+              - Rotação à direita (Right Rotation)
+              - Rotação à esquerda (Left Rotation)
+              - Rotação dupla à direita (Left-Right Double Rotation)
+              - Rotação dupla à esquerda (Right-Left Double Rotation)
+            </script>
+          </section>
+          
+          <section data-markdown>
+            <script type="text/template">
+              ##Implementando Árvores AVL em Haskell
+```Haskell
+module AVLTree(AVLTree,emptyAVL,addAVL) where
+rotateLeft,rotateRight ::
+	(Ord a,Show a) => AVLTree a -> AVLTree a
+dRotateLeftRight , dRotateRightLeft ::
+	(Ord a,Show a) => AVLTree a -> AVLTree a
+
+data AVLTree a = EmptyAVL | NodeAVL a (AVLTree a) (AVLTree a)
+	deriving (Eq, Ord, Show)
+
+emptyAVL = EmptyAVL
+```
+            </script>
+          </section>
+          
+          <section data-markdown>
+            <script type="text/template">
+              ##Implementando Árvores AVL em Haskell
+```Haskell
+rotateLeft EmptyAVL = EmptyAVL
+rotateLeft (NodeAVL v (NodeAVL lv lflf lfrt) rt)
+	= NodeAVL lv lflf (NodeAVL v lfrt rt)
+
+rotateRight EmptyAVL  = EmptyAVL
+rotateRight (NodeAVL v lf (NodeAVL rv rtlf rtrt))
+	= NodeAVL rv (NodeAVL v lf rtlf) rtrt
+```
+            </script>
+          </section>
+          
+          <section data-markdown>
+            <script type="text/template">
+              ##Implementando Árvores AVL em Haskell
+```Haskell
+dRotateRightLeft
+	(NodeAVL v lf (NodeAVL rv (NodeAVL rtlv rtlflf rtlfrt) rtrt))
+		= NodeAVL rtlv
+		((NodeAVL v lf rtlflf) NodeAVL rv rtlfrt rtrt)
+		
+dRotateLeftRight
+	(NodeAVL v (NodeAVL lv lflf (NodeAVL lfrv lfrtlf lfrtrt)) rt)
+	= NodeAVL lfrv
+	(NodeAVL lv lflf lfrtlf) (NodeAVL v lfrtrt rt)
+```
+            </script>
+          </section>
+          
+          <section data-markdown>
+            <script type="text/template">
+              ##Implementando Árvores AVL em Haskell
+```Haskell
+height EmptyAVL  = 0
+height (NodeAVL _ lf rt) = 1 + max (height lf) (height rt)
+```
+            </script>
+          </section>
+          
+          <section data-markdown>
+            <script type="text/template">
+              ##Implementando Árvores AVL em Haskell
+```Haskell
+addAVL i EmptyAVL= NodeAVL i EmptyAVL EmptyAVL
+addAVL i (NodeAVL v lf rt) 
+    | i < v = let
+				newlf@(NodeAVL newlfv _ _)  = addAVL i lf 
+			  in
+				if ((height newlf - height rt) == 2)
+				then if i < newlfv
+					then rotateLeft (NodeAVL v newlf rt)
+					else dRotateLeftRight (NodeAVL v newlf rt)
+				else (NodeAVL v newlf rt)
+```
+            </script>
+          </section>
+          
+          <section data-markdown>
+            <script type="text/template">
+              ##Implementando Árvores AVL em Haskell
+```Haskell
+    | otherwise = let
+					newrt@(NodeAVL newrtv _ _)  = addAVL i rt
+                  in
+					if ((height newrt - height lf) == 2)
+					then if i > newrtv
+						then rotateRight (NodeAVL v lf newrt)
+						else dRotateRightLeft (NodeAVL v lf newrt)
+					else (NodeAVL v lf newrt)
+```
+            </script>
+          </section>
+          
+          <section data-markdown>
+            <script type="text/template">
+              ##Complexidade da implementação
+              - Inserção, Remoção, Busca: O(log n)
+              - Rotação: O(1)
             </script>
           </section>
 
@@ -305,16 +413,16 @@ delHeap (HP x _ a b) = merge a b
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
                 // Parallax background image
-                        parallaxBackgroundImage: "https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg",
+                        //parallaxBackgroundImage: "https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg",
 
                 // Parallax background size
-						parallaxBackgroundSize: '2100px 900px', // CSS syntax, e.g. "2100px 900px" - currently only pixels are supported (don't use % or auto)
+						//parallaxBackgroundSize: '2100px 900px', // CSS syntax, e.g. "2100px 900px" - currently only pixels are supported (don't use % or auto)
 
                 // Number of pixels to move the parallax background per slide
                 // - Calculated automatically unless specified
                 // - Set to 0 to disable movement along an axis
-						parallaxBackgroundHorizontal: 200,
-						parallaxBackgroundVertical: 50,
+						//parallaxBackgroundHorizontal: 0,
+						//parallaxBackgroundVertical: 0,
 
 				controls: true,
 				progress: true,
