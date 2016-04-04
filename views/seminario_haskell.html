@@ -42,69 +42,180 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section>
-					<h1>Saulo Andrade</h1>
-					<h3>UFBA 2015.2</h3>
-					<p>
-						<small>footnote <a href="#">some link</a> </small>
-					</p>
-				</section>
+				<section data-markdown><!-- Slide1: titulo -->
+          <script type="text/template">
+            #Tipos abstratos de dados
+            ### Saulo Andrade, Phillipe Correa
+            MATE81 - Topicos em fundamentos de programação
+            Universidade Federal da Bahia - 2015.2
+          </script>
+				</section><!-- Slide1: titulo -->
 
-				<section>
-					<h2>Introduction</h2>
-					<p>
-						Some gibberish radom text
-                    </p>
-				</section>
-
-        <section>
-
-          <section>
-            <h3>Vivência Acadêmica</h3>
-            <ul>
-              <li>Estudante do Oitavo Semestre</li>
-              <li>Fui monitor de disciplina por três semestres</li>
-              <li>Tenho interesse nas áreas de Segurança e Métodos Formais</li>
-              <li>Perdi noites e madrugadas estudando XD</li>
-            </ul>
+        <section><!-- Slide2: introdução -->
+          <section data-markdown>
+            <script type="text/template">
+              #Introdução
+            </script>
           </section>
 
-          <section>
-            <h3>Experiência no MEJ</h3>
-            <ul>
-              <li>Aprendi a trabalhar em equipe</li>
-              <li>Adiquiri conhecimentos técnicos voltados em Linux, Git&GitHub, tecnologias web e parte administrativa</li>
-              <li>Em eventos do MEJ expandi minha network</li>
-              <li>Passei domingos e feriados trabalhando, e sim!! Foi divertido!</li>
-            </ul>
+          <section data-markdown>
+            <script type="text/template">
+              ##O que é um tipo abstrato de dados:
+              - Listas, árvores, arrays...
+              - Já definidas na linguagem...
+              - ...ou derivadas explicitamente por tipos já existentes na linguagem
+                - Árvores, arrays => listas
+              - Tipos abstratos: derivação implícita
+                - Palavra-chave: data / newtype
+            </script>
           </section>
 
-          <section>
-            <h3>Como pesquisador</h3>
-            <ul>
-              <li>Ganehei experiência em lógicas não-clássicas e Verificação de Modelos</li>
-              <li>Participei da construção da ferramenta de Verificação e Refinamento de Modelos, <a href="http://homes.dcc.ufba.br/~marino/ariis/en/">ARIIS</a> </li>
-              <li>Perdi palestras e trabalhei doente na escrita de um artigo :-P</li>
-              <li>Apresentei trabalhos e fui reconhecido</li>
-            </ul>
+          <section data-markdown>
+            <script type="text/template">
+              ##Tipos abstratos de dados
+              - Pilhas
+              - Filas
+              - Filas de prioridade
+              - Conjuntos
+              - Tabelas
+              - Árvores binárias
+              - Árvores AVL
+              - Heaps
+            </script>
+  				</section>
+
+        </section><!-- Slide2: introdução -->
+
+        <section><!-- Slide_: Heaps -->
+
+          <section data-markdown>
+            <script type="text/template">
+              #Heaps
+            </script>
           </section>
 
-          <section>
-            <h3>FLL</h3>
-            <ul>
-              <li>Participei como juiz voluntário de diversos torneios de robótica, com crianças de 9 a 15 anos, inspirando e dando direcionamentos para melhorarem seus trabalhos</li>
-              <li>Aprendi mais e me diverti ainda mais!</li>
-            </ul>
+          <section data-markdown>
+            <script type="text/template">
+              ##Definição de heap
+              - Árvore de busca binária onde a chave do nó é menor do que a chave dos filhos deste nó (se houver)
+                - Propriedade de ordem do heap
+              - Raiz: valor mínimo da árvore
+            </script>
           </section>
 
-        </section>
+          <section data-markdown>
+            <script type="text/template">
+              ```haskell
+              --     1
+              --   /   \
+              --  2     3
+              -- / \   / \
+              --4   6 5   7
+              ```
+            </script>
+          </section>
 
-				<!-- <section>
-                    <section data-background="http://i.giphy.com/90F8aUepslB84.gif">
-                        <h2>... and GIFs!</h2>
-                    </section>
-                </section> -->
+          <section data-markdown>
+            <script type="text/template">
+              ##Operações em heaps
+              - heapVazio: verifica se o heap está vazio.
+              - menorHeap: retorna a menor chave do heap (raiz).
+              - inserção: insere uma nova chave no heap atual. Atualiza o heap
+              - remoção: remove uma chave do heap atual. Atualiza o heap
+            </script>
+          </section>
 
+          <section data-markdown>
+            <script type="text/template">
+              ##Implementando heaps em Haskell
+              - Implementação *leftist* (Okasaki [91])
+                - Árvore binária.
+                - Cada nó tem uma chave e um rank
+                  - Chave: valor do nó.
+                  - Rank: número de nós do menor caminho até um nó vazio.
+                - A árvore *tende para a esquerda* (e se filia ao PT)
+                - Caminho mais curto até uma folha: só andar para a direita.
+            </script>
+          </section>
+
+          <section data-markdown>
+            <script type="text/template">
+              ##Implementando heaps em Haskell
+              ```haskell
+module Heap(Heap, emptyHeap, heapEmpty, findHeap, insHeap,
+	delHeap) where
+
+emptyHeap :: (Ord a) => Heap a
+heapEmpty :: (Ord a) => Heap a -> Bool
+findHeap :: (Ord a) => Heap a -> a
+insHeap :: (Ord a) => a -> Heap a -> Heap a
+delHeap :: (Ord a) => Heap a -> Heap a
+rank :: (Ord a) => Heap a -> Int
+makeHP :: (Ord a) => a -> Heap a -> Heap a -> Heap a
+merge :: (Ord a) => Heap a -> Heap a -> Heap a
+              ```
+            </script>
+          </section>
+
+					<section data-markdown>
+            <script type="text/template">
+              ##Implementando heaps em Haskell
+              ```haskell
+emptyHeap = EmptyHP
+
+heapEmpty EmptyHP = True
+heapEmpty _ = False
+
+findHeap EmptyHP = error "findHeap:empty Heap"
+findHeap (HP x _ a b) = x
+              ```
+            </script>
+          </section>
+
+					<section data-markdown>
+            <script type="text/template">
+              ##Implementando heaps em Haskell
+              ```haskell
+rank EmptyHP = 0
+rank (HP _ r _ _) = r
+
+makeHP x a b
+  | rank a >= rank b = HP x (rank b + 1) a b
+  | otherwise = HP x (rank a + 1) b a
+
+merge h EmptyHP = h
+merge EmptyHP h = h
+merge h1@(HP x _ a1 b1) h2@(HP y _ a2 b2)
+  | x <= y = makeHP x a1 (merge b1 h2)
+  | otherwise = makeHP y a2 (merge h1 b2)
+              ```
+            </script>
+          </section>
+
+					<section data-markdown>
+            <script type="text/template">
+              ##Implementando heaps em Haskell
+              ```haskell
+insHeap x h = merge (HP x 1 EmptyHP EmptyHP) h
+
+delHeap EmptyHP = error "delHeap:empty heap"
+delHeap (HP x _ a b) = merge a b
+              ```
+            </script>
+          </section>
+
+          <section data-markdown>
+            <script type="text/template">
+              ##Complexidade da implementação
+              - heapEmpty, findHeap: O(1)
+                - Operações que requerem a raiz do heap.
+							-insHeap, delHeap: O(log n)
+								- Operações feitas a partir da função merge
+								- merge tem complexidade O(log n)
+            </script>
+          </section>
+
+        </section><!-- Slide_: Heaps -->
 
 				<section style="text-align: left;">
 					<h1>THE END</h1>
