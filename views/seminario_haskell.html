@@ -118,10 +118,10 @@
           <section data-markdown>
             <script type="text/template">
               ##Operações em heaps
-              - heapVazio: verifica se o heap está vazio.
-              - menorHeap: retorna a menor chave do heap (raiz).
-              - inserção: insere uma nova chave no heap atual. Atualiza o heap
-              - remoção: remove uma chave do heap atual. Atualiza o heap
+              - Inserção: insere uma nova chave no heap atual. Atualiza o heap.
+              - Remoção: remove uma chave do heap atual. Atualiza o heap.
+              - HeapVazio: verifica se o heap está vazio.
+              - MenorHeap: retorna a menor chave do heap (raiz).
             </script>
           </section>
 
@@ -215,6 +215,74 @@ delHeap (HP x _ a b) = merge a b
           </section>
 
         </section><!-- Slide_: Heaps -->
+        
+        <section><!-- Slide_: Árvores AVL -->
+
+          <section data-markdown>
+            <script type="text/template">
+              #Árvore AVL
+            </script>
+          </section>
+          
+          <section data-markdown>
+            <script type="text/template">
+              ##Definição de Árvore AVL
+              - Árvore de busca binária com condição de balanceamento
+              - Altura das subárvores não pode ser maior do que 1
+            </script>
+          </section>
+          
+          <section data-markdown>
+            <script type="text/template">
+              ```haskell
+              -- Isto é uma árvore AVL
+              --     4
+              --   /   \
+              --  2     6
+              --   \   / \
+              --    3 5   8
+              --           \
+              --            9
+              ```
+            </script>
+          </section>
+          
+          <section data-markdown>
+            <script type="text/template">
+              ```haskell
+              -- Isto é uma árvore, mas não é AVL
+              --        6
+              --      /   \
+              --     3     7
+              --    / \  
+              --   2   4 
+              --  /
+              -- 1 
+              ```
+            </script>
+          </section>
+          
+          <section data-markdown>
+            <script type="text/template">
+              ##Operações em árvores AVL
+              - Inserção: Insere um novo nó na árvore. Rebalanceia a árvore se necessário.
+              - Remoção: Remove um nó existente da árvore. Rebalanceia a árvore se necessário.
+              - Rotação: Rotaciona uma árvore. Usada para rebalancear a árvore.
+            </script>
+          </section>
+          
+          <section data-markdown>
+            <script type="text/template">
+              ##Rotacionando uma árvore AVL
+              - Rotação à direita (Right Rotation):
+              - Rotação à esquerda (Left Rotation):
+              - Rotação dupla à direita ():
+              - Rotação dupla à esquerda ():
+              - PS: insira imagens
+            </script>
+          </section>
+
+        </section><!-- Slide_: Árvores AVL -->
 
 				<section style="text-align: left;">
 					<h1>THE END</h1>
@@ -240,13 +308,13 @@ delHeap (HP x _ a b) = merge a b
                         parallaxBackgroundImage: "https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg",
 
                 // Parallax background size
-                parallaxBackgroundSize: '2100px 900px', // CSS syntax, e.g. "2100px 900px" - currently only pixels are supported (don't use % or auto)
+						parallaxBackgroundSize: '2100px 900px', // CSS syntax, e.g. "2100px 900px" - currently only pixels are supported (don't use % or auto)
 
                 // Number of pixels to move the parallax background per slide
                 // - Calculated automatically unless specified
                 // - Set to 0 to disable movement along an axis
-                parallaxBackgroundHorizontal: 200,
-                parallaxBackgroundVertical: 50,
+						parallaxBackgroundHorizontal: 200,
+						parallaxBackgroundVertical: 50,
 
 				controls: true,
 				progress: true,
