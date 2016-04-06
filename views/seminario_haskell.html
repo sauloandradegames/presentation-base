@@ -200,11 +200,12 @@
 				<section data-markdown>
 					<script type="text/template">
 						##Conjuntos com listas
-						- Deriving Eq
-						- Pertença e remoção simples:
-							- Pode encerrar mais cedo em relação a implementação anterior
-						- Tempo linear no tamanho do conjunto. O(n)
-						- Mesmo a lista estando ordenada, a melhora não é tao grande assim.
+						- Ordenada, sem duplicatas
+							- Deriving Eq
+							- Pertença e remoção simples:
+								- Pode encerrar mais cedo em relação a implementação anterior
+							- Tempo linear no tamanho do conjunto. O(n)
+							- Mesmo a lista estando ordenada, a melhora não é tao grande assim.
 					</script>
 				</section>
 				
@@ -212,7 +213,7 @@
 					<script type="text/template">
 						####Comparando a complexidade das implementações
 ---------------------------------------------
-implementacao | Pertença | Inserção | Remoção
+Implementacao | Pertença | Inserção | Remoção
 --------------|----------|----------|--------
 lista nao ordenada com duplicatas | O(k) | O(1) | O(k)
 lista nao ordenada sem duplicatas | O(n) | O(n) | O(n)
@@ -234,17 +235,78 @@ vetor de bits | ? | ? | ?
 						#Tabelas
 					</script>
 				</section>
-
-			</section><!-- Slide7: tabelas-->
-
-			<section><!-- Slide8: arvore busca binaria -->
+				
 				<section data-markdown>
 					<script type="text/template">
-						<!-- .slide: data-background="http://cdn.makeagif.com/media/7-02-2015/m2cI7J.gif"-->
-						#Árvores de busca binária
+						##Definição de tabelas
+						- Permite armazenar e recuperar valores conforme índices.
+						- Planilha de Excel
 					</script>
 				</section>
-			</section><!-- Slide8: arvore busca binaria -->
+				
+				<section data-markdown>
+					<script type="text/template">
+						##Operações com tabelas
+						- Gerar Tabela: Gera uma nova tabela a partir de uma lista de pares (índice, valor).
+						- Seleção: Recupera valores da tabela.
+						- Atualização: Atualiza valores da tabela.
+					</script>
+				</section>
+				
+				<section data-markdown>
+					<script type="text/template">
+						##Implementando tabelas em Haskell
+						- Implementação via função
+						- Implementação via listas
+						- Implementação via arrays
+					</script>
+				</section>
+				
+				<section data-markdown>
+					<script type="text/template">
+						##Implementando tabelas com funções
+						- Aproveitando o poder de Haskell.
+						- Inserir um elemento em um índice -> Criar nova função para tal elemento.
+							- Aplica fold
+						- Custo depende de quando efetuar a operação de atualização.
+							- Quanto mais tarde, melhor
+							- Seleção linear no pior caso.
+					</script>
+				</section>
+				
+				<section data-markdown>
+					<script type="text/template">
+						##Implementando tabelas com listas
+						- Lista de pares (índice, valor)
+							- Lista de associação
+						- Representação ineficiente
+							- Seleção e atualização lineares no pior caso, em relação ao número de entradas da tabela.
+							- Mesmo se ordenar os índices, o tempo de acesso continua linear.
+					</script>
+				</section>
+				
+				<section data-markdown>
+					<script type="text/template">
+						##Implementando tabelas com arrays
+						- Deriving Ix
+						- Não permite inserir ou atualizar valores fora dos índices da tabela.
+						- Gerar Tabela agora determina os limites da tabela.
+						- Seleção gera erro de sistema
+						- Complexidade depende da implementação do array.
+							- O(1) no melhor caso. Restringe atualização.
+					</script>
+				</section>
+				
+				<section data-markdown>
+					<script type="text/template">
+						##Implementando tabelas com árvores
+						- Usar árvores de busca binária ou heap.
+						- Cada nó representa um par (índice, valor)
+						- Complexidade: O(log n)
+					</script>
+				</section>
+
+			</section><!-- Slide7: tabelas-->
 
 			<section><!-- Slide9: Heaps -->
 
@@ -369,190 +431,13 @@ vetor de bits | ? | ? | ?
 					<script type="text/template">
 						##Complexidade da implementação
 						- heapVazio, menorHeap: **O(1)**
-						- Verifica a raiz do heap
+							- Verifica a raiz do heap
 						- inserção, remoção: **O(log n)**
-						- Merge da espinha direita de duas árvores leftist
+							- Merge da espinha direita de duas árvores leftist
 					</script>
 				</section>
 
 			</section><!-- Slide9: Heaps -->
-
-			<section><!-- Slide10: Árvores AVL -->
-
-				<section data-markdown>
-					<script type="text/template">
-						<!-- .slide: data-background="http://odin.mat.ufrgs.br/usuarios/paula/partes_c_2a/m_8/imagens/28.gif"-->
-						#Árvore AVL
-					</script>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						##Definição de Árvore AVL
-						- Árvore de busca binária com condição de balanceamento
-						- Altura das subárvores não pode ser maior do que 1
-					</script>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						```haskell
-						-- Isto é uma árvore AVL
-						--     4
-						--   /   \
-						--  2     6
-						--   \   / \
-						--    3 5   8
-						--           \
-						--            9
-						```
-					</script>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						```haskell
-						-- Isto é uma árvore, mas não é AVL
-						--        6
-						--      /   \
-						--     3     7
-						--    / \
-						--   2   4
-						--  /
-						-- 1
-						```
-					</script>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						##Operações em árvores AVL
-						- Inserção: Insere um novo nó na árvore. Rebalanceia a árvore se necessário.
-						- Remoção: Remove um nó existente da árvore. Rebalanceia a árvore se necessário.
-						- Rotação: Rotaciona uma árvore. Usada para rebalancear a árvore.
-					</script>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						<!-- .slide: data-background="http://big.assets.huffingtonpost.com/spinning_the_wheel_by_leafman813-d6uhbh6.gif"-->
-						#Rodando uma árvore AVL
-					</script>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						##Rodando uma árvore AVL
-						- Rotação à direita (Right Rotation)
-						- Rotação à esquerda (Left Rotation)
-						- Rotação dupla à direita (Left-Right Double Rotation)
-						- Rotação dupla à esquerda (Right-Left Double Rotation)
-					</script>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						##Implementando Árvores AVL em Haskell
-						```Haskell
-						module AVLTree(AVLTree,emptyAVL,addAVL) where
-						rotateLeft,rotateRight ::
-						(Ord a,Show a) => AVLTree a -> AVLTree a
-						dRotateLeftRight , dRotateRightLeft ::
-						(Ord a,Show a) => AVLTree a -> AVLTree a
-
-						data AVLTree a = EmptyAVL | NodeAVL a (AVLTree a) (AVLTree a)
-						deriving (Eq, Ord, Show)
-
-						emptyAVL = EmptyAVL
-						```
-					</script>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						##Implementando Árvores AVL em Haskell
-						```Haskell
-						rotateLeft EmptyAVL = EmptyAVL
-						rotateLeft (NodeAVL v (NodeAVL lv lflf lfrt) rt)
-						= NodeAVL lv lflf (NodeAVL v lfrt rt)
-
-						rotateRight EmptyAVL  = EmptyAVL
-						rotateRight (NodeAVL v lf (NodeAVL rv rtlf rtrt))
-						= NodeAVL rv (NodeAVL v lf rtlf) rtrt
-						```
-					</script>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						##Implementando Árvores AVL em Haskell
-						```Haskell
-						dRotateRightLeft
-						(NodeAVL v lf (NodeAVL rv (NodeAVL rtlv rtlflf rtlfrt) rtrt))
-						= NodeAVL rtlv
-						((NodeAVL v lf rtlflf) NodeAVL rv rtlfrt rtrt)
-
-						dRotateLeftRight
-						(NodeAVL v (NodeAVL lv lflf (NodeAVL lfrv lfrtlf lfrtrt)) rt)
-						= NodeAVL lfrv
-						(NodeAVL lv lflf lfrtlf) (NodeAVL v lfrtrt rt)
-						```
-					</script>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						##Implementando Árvores AVL em Haskell
-						```Haskell
-						height EmptyAVL  = 0
-						height (NodeAVL _ lf rt) = 1 + max (height lf) (height rt)
-						```
-					</script>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						##Implementando Árvores AVL em Haskell
-						```Haskell
-						addAVL i EmptyAVL= NodeAVL i EmptyAVL EmptyAVL
-						addAVL i (NodeAVL v lf rt)
-						| i < v = let
-						newlf@(NodeAVL newlfv _ _)  = addAVL i lf
-						in
-						if ((height newlf - height rt) == 2)
-						then if i < newlfv
-						then rotateLeft (NodeAVL v newlf rt)
-						else dRotateLeftRight (NodeAVL v newlf rt)
-						else (NodeAVL v newlf rt)
-						```
-					</script>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						##Implementando Árvores AVL em Haskell
-						```Haskell
-						| otherwise = let
-						newrt@(NodeAVL newrtv _ _)  = addAVL i rt
-						in
-						if ((height newrt - height lf) == 2)
-						then if i > newrtv
-						then rotateRight (NodeAVL v lf newrt)
-						else dRotateRightLeft (NodeAVL v lf newrt)
-						else (NodeAVL v lf newrt)
-						```
-					</script>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						##Complexidade da implementação
-						- Inserção, Remoção, Busca: O(log n)
-						- Rotação: O(1)
-					</script>
-				</section>
-
-			</section><!-- Slide10: Árvores AVL -->
 
 			<section><!-- Slide11: Fim-->
 				<h1>OBRIGADO</h1>
