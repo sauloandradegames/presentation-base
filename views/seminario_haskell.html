@@ -112,6 +112,7 @@
 
 				<section data-markdown>
 					<script type="text/template">
+						<!-- .slide: data-background="http://assimcomovoce.blogfolha.uol.com.br/files/2012/06/mercado.jpg"-->
 						#Filas de prioridade
 					</script>
 				</section>
@@ -122,7 +123,104 @@
 
 				<section data-markdown>
 					<script type="text/template">
+						<!-- .slide: data-background="http://html.rincondelvago.com/000425604.png"-->
 						#Conjuntos
+					</script>
+				</section>
+				
+				<section data-markdown>
+					<script type="text/template">
+						##Definição de conjuntos
+						- Coleção de itens distintos
+						- Não há elementos repetidos
+						- Tamanho do conjunto: quantos elementos distintos existem no conjunto
+					</script>
+				</section>
+				
+				<section data-markdown>
+					<script type="text/template">
+						##Operações em conjuntos
+						- Pertença: Verifica se um dado elemento pertence a um determinado conjunto
+						- Inserção: Insere um novo elemento em um conjunto (se não existir).
+						- Remoção: Remove um elemento de um conjunto (se existir).
+					</script>
+				</section>
+				
+				<section data-markdown>
+					<script type="text/template">
+						##Implementando conjuntos em Haskell
+						- Várias maneiras de implementar
+						- Algumas mais eficientes, outras não.
+						- Qual operação será priorizada?
+					</script>
+				</section>
+				
+				<section data-markdown>
+					<script type="text/template">
+						##Implementando conjuntos em Haskell
+						- Listas
+							- Não ordenada, sem duplicatas
+							- Não ordenada, com duplicatas
+							- Ordenada, sem duplicatas
+						- Árvores
+						- Vetor de bits
+					</script>
+				</section>
+				
+				<section data-markdown>
+					<script type="text/template">
+						##Conjuntos com listas
+						- Não ordenada, com duplicatas
+							- Inserção simples:
+								- Só inserir na lista.
+								- Tempo constante. O(1).
+							- Pertença e remoção complicadas:
+								- Pode precisar varrer toda a lista.
+								- Precisa remover todas as instâncias do elemento na lista.
+								- A lista pode ser maior do que o conjunto.
+								- Lista de tamanho k comporta n elementos tq. k >= n.
+								- Tempo linear no tamanho da lista. O(k).
+					</script>
+				</section>
+				
+				<section data-markdown>
+					<script type="text/template">
+						##Conjuntos com listas
+						- Não ordenada, sem duplicatas
+							- Tamanho da lista = Tamanho do conjunto.
+							- Remoção simples:
+								- Só precisa remover uma única instância do elemento.
+							- Inserção complicada:
+								- Pode precisar varrer toda a lista.
+								- Precisa verificar se o elemento já está na lista.
+							- Tempo linear no tamanho do conjunto. O(n).
+					</script>
+				</section>
+				
+				<section data-markdown>
+					<script type="text/template">
+						##Conjuntos com listas
+						- Deriving Eq
+						- Pertença e remoção simples:
+							- Pode encerrar mais cedo em relação a implementação anterior
+						- Tempo linear no tamanho do conjunto. O(n)
+						- Mesmo a lista estando ordenada, a melhora não é tao grande assim.
+					</script>
+				</section>
+				
+				<section data-markdown>
+					<script type="text/template">
+						####Comparando a complexidade das implementações
+---------------------------------------------
+implementacao | Pertença | Inserção | Remoção
+--------------|----------|----------|--------
+lista nao ordenada com duplicatas | O(k) | O(1) | O(k)
+lista nao ordenada sem duplicatas | O(n) | O(n) | O(n)
+lista ordenada sem duplicatas | O(n) | O(n) | O(n)
+árvores | O(log n) | O(log n) | O(log n)
+vetor de bits | ? | ? | ?
+---------------------------------------
+							n: #elementos do conjunto. k: #elementos da lista. k >= n.
 					</script>
 				</section>
 
@@ -152,6 +250,7 @@
 
 				<section data-markdown>
 					<script type="text/template">
+						<!-- .slide: data-background="http://thinkfuture.com/wp-content/uploads/2014/03/heaps.jpg"-->
 						#Heaps
 					</script>
 				</section>
@@ -282,6 +381,7 @@
 
 				<section data-markdown>
 					<script type="text/template">
+						<!-- .slide: data-background="http://odin.mat.ufrgs.br/usuarios/paula/partes_c_2a/m_8/imagens/28.gif"-->
 						#Árvore AVL
 					</script>
 				</section>
