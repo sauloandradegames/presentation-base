@@ -61,11 +61,12 @@
 				<section data-markdown>
 					<script type="text/template">
 						##O que é um tipo abstrato de dados:
-						- Listas, árvores, arrays...
-						- Já definidas na linguagem...
-						- ...ou derivadas explicitamente por tipos já existentes na linguagem
-						- Árvores, arrays => listas
-						- Tipos abstratos: derivação implícita
+						- Definido como um modelo matemático por meio de um par (v, o) em que:
+							- v: conjunto de valores
+							- o: conjunto de operações sobre esses valores
+						- Ex.: Conjunto dos números reais
+							- v: R
+							- o: {+, -, *, /, =, >, >=, <, <=}
 						- Palavra-chave: data / newtype
 					</script>
 				</section>
@@ -85,11 +86,17 @@
 				</section>
 
 			</section><!-- Slide2: introdução -->
-			
+
 			<section><!-- Slide3: sobre modulos -->
 				<section data-markdown>
 					<script type="text/template">
 						#Introdução a módulos em haskell
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+						![Imagem Modulo C](../assets/exemplo_Module.png)
 					</script>
 				</section>
 
@@ -100,7 +107,13 @@
 				<section data-markdown>
 					<script type="text/template">
 						<!-- .slide: data-background="http://forgifs.com/gallery/d/242971-2/Baby-stacking-blocks-ragequit.gif"-->
-						#Pilhas
+						#Pilhas (LIFO)
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+						![Imagem Pilha](../assets/exemplo_pilha.png)
 					</script>
 				</section>
 
@@ -111,7 +124,13 @@
 				<section data-markdown>
 					<script type="text/template">
 						<!-- .slide: data-background="http://forgifs.com/gallery/d/228131-2/Waiting-in-lines-queue.gif"-->
-						#Filas
+						#Filas (FIFO)
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+						![Imagem Fila](../assets/Exemplo_fila.png)
 					</script>
 				</section>
 
@@ -126,6 +145,14 @@
 					</script>
 				</section>
 
+				<section data-markdown>
+					<script type="text/template">
+						##Implementando filas de prioridade em Haskell
+						- Implementada em listas
+						- Implementada em heap
+					</script>
+				</section>
+
 			</section><!-- Slide6: filas de prioridade-->
 
 			<section><!-- Slide7: conjuntos-->
@@ -136,7 +163,7 @@
 						#Conjuntos
 					</script>
 				</section>
-				
+
 				<section data-markdown>
 					<script type="text/template">
 						##Definição de conjuntos
@@ -145,7 +172,7 @@
 						- Tamanho do conjunto: quantos elementos distintos existem no conjunto
 					</script>
 				</section>
-				
+
 				<section data-markdown>
 					<script type="text/template">
 						##Operações em conjuntos
@@ -154,7 +181,7 @@
 						- Remoção: Remove um elemento de um conjunto (se existir).
 					</script>
 				</section>
-				
+
 				<section data-markdown>
 					<script type="text/template">
 						##Implementando conjuntos em Haskell
@@ -163,7 +190,7 @@
 						- Qual operação será priorizada?
 					</script>
 				</section>
-				
+
 				<section data-markdown>
 					<script type="text/template">
 						##Implementando conjuntos em Haskell
@@ -175,7 +202,7 @@
 						- Vetor de bits
 					</script>
 				</section>
-				
+
 				<section data-markdown>
 					<script type="text/template">
 						##Conjuntos com listas
@@ -191,7 +218,7 @@
 								- Tempo linear no tamanho da lista. **O(k).**
 					</script>
 				</section>
-				
+
 				<section data-markdown>
 					<script type="text/template">
 						##Conjuntos com listas
@@ -205,7 +232,7 @@
 							- Tempo linear no tamanho do conjunto. **O(n).**
 					</script>
 				</section>
-				
+
 				<section data-markdown>
 					<script type="text/template">
 						##Conjuntos com listas
@@ -217,7 +244,7 @@
 							- Mesmo a lista estando ordenada, a melhora não é tao grande assim.
 					</script>
 				</section>
-				
+
 				<section data-markdown>
 					<script type="text/template">
 						####Comparando a complexidade das implementações
@@ -244,7 +271,7 @@ vetor de bits | ? | ? | ?
 						#Tabelas
 					</script>
 				</section>
-				
+
 				<section data-markdown>
 					<script type="text/template">
 						##Definição de tabelas
@@ -252,7 +279,7 @@ vetor de bits | ? | ? | ?
 						- Planilha de Excel
 					</script>
 				</section>
-				
+
 				<section data-markdown>
 					<script type="text/template">
 						##Operações com tabelas
@@ -261,7 +288,7 @@ vetor de bits | ? | ? | ?
 						- Atualização: Atualiza valores da tabela.
 					</script>
 				</section>
-				
+
 				<section data-markdown>
 					<script type="text/template">
 						##Implementando tabelas em Haskell
@@ -270,7 +297,7 @@ vetor de bits | ? | ? | ?
 						- Implementação via arrays
 					</script>
 				</section>
-				
+
 				<section data-markdown>
 					<script type="text/template">
 						##Implementando tabelas com funções
@@ -282,7 +309,7 @@ vetor de bits | ? | ? | ?
 							- Seleção linear no pior caso.
 					</script>
 				</section>
-				
+
 				<section data-markdown>
 					<script type="text/template">
 						##Implementando tabelas com listas
@@ -293,7 +320,7 @@ vetor de bits | ? | ? | ?
 							- Mesmo se ordenar os índices, o tempo de acesso continua linear.
 					</script>
 				</section>
-				
+
 				<section data-markdown>
 					<script type="text/template">
 						##Implementando tabelas com arrays
@@ -305,7 +332,7 @@ vetor de bits | ? | ? | ?
 							- **O(1)** no melhor caso. Restringe atualização.
 					</script>
 				</section>
-				
+
 				<section data-markdown>
 					<script type="text/template">
 						##Implementando tabelas com árvores
@@ -334,13 +361,13 @@ vetor de bits | ? | ? | ?
 						- Raiz: valor mínimo da árvore
 					</script>
 				</section>
-				
+
 				<section data-markdown>
 					<script type="text/template">
 						![Imagem Heap](../assets/haskell_exemploHeap.jpg)
 					</script>
 				</section>
-				
+
 				<section data-markdown>
 					<script type="text/template">
 						![Imagem Nao Heap](../assets/haskell_exemploNaoHeap.jpg)
