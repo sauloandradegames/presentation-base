@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>FAZENDO SLIDES EM HTML5 USANDO REVEAL.JS - reveal.js – The HTML Presentation Framework</title>
+
+	<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+	<meta name="author" content="Hakim El Hattab">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet" href="../vendor/reveal.js/css/reveal.css">
+	<link rel="stylesheet" href="../vendor/reveal.js/css/theme/simple.css" id="theme">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../assets/css/animation.css">
+
+	<!-- Code syntax highlighting../vendor/reveal.js/ -->
+	<link rel="stylesheet" href="../vendor/reveal.js/clib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+	var link = document.createElement( 'link' );
+	link.rel = 'stylesheet';
+	link.type = 'text/css';
+	link.href = window.location.search.match( /print-pdf/gi ) ? '../vendor/reveal.js/ccss/print/pdf.css' : '../vendor/reveal.js/css/print/paper.css';
+	document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+
+	<div class="reveal">
+
+		<!-- Todo section dentro deste container eh exibido como um slide. -->
+		<div class="slides">
+			<section>
+				<h2> FAZENDO SLIDES EM HTML5 USANDO REVEAL.JS</h2>
+				<h4> Saulo Ribeiro de Andrade </h4>
+				<h4> Universidade Federal da Bahia </h4>
+				<h5> Cheque o arquivo .html para saber como isso funciona</h5>
+			</section>
+
+		<!-- Slides dentro de slides -->
+			<section>
+				<section>
+					<h2>Slides dentro de slides</h2>
+					<h3>Aperte para baixo</h3>
+				</section>
+
+				<section>
+					<h3>... continue descendo ...</h3>
+				</section>
+
+				<section>
+					<h3>... agora suba de novo!</h3>
+				</section>
+			</section>
+
+		<!-- Criando slides usando markdown -->
+			<section data-markdown>
+				##Code seus slides em html puro ou markdown
+				- Apenas coloque "data-markdown" dentro do section e divirta-se.
+				- Use o markdown que voce usaria nos README do github.
+				- Vale tudo
+			</section>
+
+		<!-- Fragmentos de slides -->
+			<section>
+				<section>
+					<h1>FRAGMENTOS</h1>
+					<p>Compostos de INDEX e CLASS</p>
+					<p data-fragment-index="0" class="fragment">INDEX: Indice do fragmento (qual fragmento é exibido na ordem)</p>
+					<p data-fragment-index="1" class="fragment">CLASS: Tipo de transição do fragmento (como o fragmento se revela na apresentação)</p>
+				</section>
+
+				<section>
+					<h2>FRAGMENTOS: INDEX</h2>
+					<p data-fragment-index="0" class="fragment">data-fragment-index="#"</p>
+					<p data-fragment-index="1" class="fragment"># é um numero qualquer (começando de 0)</p>
+				</section>
+
+				<section>
+					<h2>FRAGMENTOS: CLASS</h2>
+					<p data-fragment-index="0" class="fragment">class="fragment [transição]"</p>
+					<p data-fragment-index="1" class="fragment">[transição] determina o tipo de transição.</p>
+					<p data-fragment-index="2" class="fragment">Pode ser omitido.</p>
+					<p data-fragment-index="3" class="fragment">Nesse caso, usa a transição padrão de fade-in.</p>
+				</section>
+
+				<section>
+					<h2>FRAGMENTOS: TIPOS DE TRANSIÇÃO</h2>
+					<p data-fragment-index="1" class="fragment current-visible">current-visible</p>
+					<p data-fragment-index="2" class="fragment grow">grow</p>
+					<p data-fragment-index="3" class="fragment shrink">shrink</p>
+					<p data-fragment-index="4" class="fragment fade-out">fade-out</p>
+					<p data-fragment-index="5" class="fragment highlight-red">highlight red</p>
+					<p data-fragment-index="6" class="fragment highlight-blue">highlight blue</p>
+					<p data-fragment-index="7" class="fragment highlight-green">highlight green</p>
+				</section>
+			</section>
+
+		<!-- Plano de fundo e transicoes -->
+			<section>
+				<section>
+					<h1>PLANO DE FUNDO</h1>
+					<p>Configure plano de fundo dos slides individualmente usando data-background=""</p>
+					<p>Você pode configurar qualquer coisa como plano de fundo...</p>
+				</section>
+
+				<section data-background="#00ffff">
+					<h2>COMO CORES</h2>
+					<p>data-background="#00ffff"</p>
+				</section>
+
+				<section data-background="https://static.significados.com.br/foto/ed5a-o-grito_sm.png">
+					<h2>IMAGENS</h2>
+					<p>section data-background="https://static.significados.com.br/foto/ed5a-o-grito_sm.png"</p>
+				</section>
+
+				<section data-background="https://static.significados.com.br/foto/ed5a-o-grito_sm.png" data-background-repeat="repeat" data-background-size="100px">
+					<h2>IMAGENS LADO A LADO</h2>
+					<p>section data-background="https://static.significados.com.br/foto/ed5a-o-grito_sm.png"</p>
+					<p>data-background-repeat="repeat"</p>
+					<p>data-background-size="100px"</p>
+				</section>
+
+				<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
+					<h2>INCLUSIVE, GIFS!</h2>
+				</section>
+
+				<section data-background="#4499ff" data-background-transition="zoom">
+					<h2>TRANSIÇÕES DE PLANO DE FUNDO</h2>
+					<p>Usando data-background-transition, você pode configurar transições de pano de fundo!</p>
+				</section>				
+			</section>
+
+		<!-- Listando coisas-->
+			<section>
+				<section>
+					<h2>LISTANDO COISAS...</h2>
+					<p>Com tags html ou markdown</p>
+					<ul>
+						<li>Listas nao ordenadas usam "ul"</li>
+						<li>Listas ordenadas usam "ol"</li>
+						<li>Dentro deles, existem os "li"</li>
+						<li>O que estiver envolto nos "li" corresponde a um item da lista</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>COMO FUNCIONA ESSE TROÇO?</h2>
+					<ol>
+						<li>Crie a tag "ul" ou "ol"</li>
+						<li>Dentro dela, crie os seus "li"</li>
+						<li>Crie suas listas adoidado</li>
+					</ol>
+				</section>
+			</section>
+
+		<!-- Tabelando coisas-->
+			<section>
+				<section>
+					<h2>TABELANDO COISAS</h2>
+					<p>Com tags html ou markdown</p>
+					<p>Muito mais facil com markdown</p>
+				</section>
+
+				<section data-markdown>
+					---------------------------------------------
+					Implementacao | Pertença | Inserção | Remoção
+					--------------|----------|----------|--------
+					lista nao ordenada com duplicatas | O(k) | O(1) | O(k)
+					lista nao ordenada sem duplicatas | O(n) | O(n) | O(n)
+					lista ordenada sem duplicatas | O(n) | O(n) | O(n)
+					árvores | O(log n) | O(log n) | O(log n)
+					vetor de bits | ? | ? | ?
+					---------------------------------------
+				</section>
+			</section>
+
+		<!-- FIM -->
+			<section>
+				<h1>FIM!</h1>
+			</section>
+	</div>
+
+	<script src="../vendor/reveal.js/lib/js/head.min.js"></script>
+	<script src="../vendor/reveal.js/js/reveal.js"></script>
+
+	<script>
+
+	// Full list of configuration options available at:
+	// https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		controls: true,
+		progress: true,
+		history: true,
+		center: true,
+
+		transition: 'zoom', // none/fade/slide/convex/concave/zoom
+
+		// Optional reveal.js plugins
+		dependencies: [
+			{ src: '../vendor/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+			{ src: '../vendor/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: '../vendor/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: '../vendor/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+			{ src: '../vendor/reveal.js/plugin/zoom-js/zoom.js', async: true },
+			{ src: '../vendor/reveal.js/plugin/notes/notes.js', async: true }
+		]
+	});
+
+	</script>
+
+</body>
+</html>
