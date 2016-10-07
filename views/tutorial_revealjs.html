@@ -49,28 +49,119 @@
 				<h5> Cheque o arquivo .html para saber como isso funciona</h5>
 			</section>
 
+			<section>
+				<h3> REVEAL.JS?</h3>
+				<ul>
+					<li> Framework de apresentações usando HTML </li>
+					<li> Criado e mantido por Hakim El Hattab </li>
+					<li> Tá no Github </li>
+				</ul>
+			</section>
+
 		<!-- Slides dentro de slides -->
 			<section>
-				<section>
-					<h2>Slides dentro de slides</h2>
-					<h3>Aperte para baixo</h3>
+				<section data-markdown>
+					###ESTRUTURA BÁSICA
+```
+< html lang="en" >
+	< head >
+		-- Cabeçalho da pagina
+	< /head >
+
+	< body >
+		< div class="reveal" >
+			< div class="slides" >
+				< section >
+				-- Slide 1
+				< /section >
+			< /div >
+		< /div >
+
+		< script src="../vendor/reveal.js/lib/js/head.min.js" >< /script >
+		< script src="../vendor/reveal.js/js/reveal.js" >< /script >
+
+		< script >
+		Reveal.initialize({});
+
+		< /script >
+	< /body >
+
+< /html >
+```
 				</section>
 
-				<section>
-					<h3>... continue descendo ...</h3>
+				<section data-markdown>
+					###ESTRUTURA BÁSICA - CABEÇALHO
+```
+< html lang="en" >
+	< head >
+		< meta charset="utf-8" >
+
+		< title >reveal.js – The HTML Presentation Framework< /title >
+
+		< meta name="description" content="A framework for easily creating beautiful presentations using HTML" >
+		< meta name="author" content="Hakim El Hattab" >
+	< /head >
+	...
+```
+					- Informações básicas sobre a página
+						- Título da página, descrição, autor...
+					- Adicionar suporte a outras funcionalidades
+						- Exportar para PDF, code highlight, navegação mobile...
 				</section>
 
-				<section>
-					<h3>... agora suba de novo!</h3>
+				<section data-markdown>
+					###ESTRUTURA BÁSICA - CORPO
+```
+	...
+	< body >
+		< div class="reveal" >
+			< div class="slides" >
+				< section >
+					-- Slide 1
+				< /section >
+
+				< section >
+					-- Slide 2
+				< /section >
+			< /div >
+		< /div >
+
+		< script src="../vendor/reveal.js/lib/js/head.min.js" >< /script >
+		< script src="../vendor/reveal.js/js/reveal.js" >< /script >
+
+		< script >
+		Reveal.initialize({});
+
+		< /script >
+	< /body >
+
+< /html >
+```
+					- Contem os slides, depedências do reveal.js e a Função de inicialização do reveal.js
+						- Pode conter configurações e importação de plugins
+						- Ou pode conter nada
 				</section>
 			</section>
 
-		<!-- Criando slides usando markdown -->
 			<section data-markdown>
-				##Code seus slides em html puro ou markdown
-				- Apenas coloque "data-markdown" dentro do section e divirta-se.
-				- Use o markdown que voce usaria nos README do github.
-				- Vale tudo
+				###CODANDO SLIDES
+				- Em HTML ou markdown
+					- Para usar markdown, use _< section data-markdown >_
+				- Indepedente disso, são compostos dentro de sections
+				- Sections ficam dentro da div "slides"
+				- Que fica dentro da div "reveal"
+			</section>
+
+			<section data-markdown>
+				###ADICIONANDO COISAS NOS SLIDES
+				- Fragmentos
+				- Plano de fundo
+					- Cores sólidas, imagens, vídeos, gifs
+				- Listas
+				- Tabelas
+				- Citações
+				- ...
 			</section>
 
 		<!-- Fragmentos de slides -->
@@ -188,9 +279,6 @@
 			</section>
 
 		<!-- FIM -->
-			<section>
-				<h1>FIM!</h1>
-			</section>
 	</div>
 
 	<script src="../vendor/reveal.js/lib/js/head.min.js"></script>
@@ -205,7 +293,6 @@
 		progress: true,
 		history: true,
 		center: true,
-
 		transition: 'zoom', // none/fade/slide/convex/concave/zoom
 
 		// Optional reveal.js plugins
